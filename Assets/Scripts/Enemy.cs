@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public int m_hpMax;
     public int m_exp;
     public int m_damage;
+    public Explosion m_explosionPrefab;
 
     private int m_hp;
     private Vector3 m_direction;
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.name.Contains("Shot"))
         {
+            Instantiate(m_explosionPrefab, collision.transform.localPosition, Quaternion.identity);
             Destroy(collision.gameObject);
 
             m_hp--;

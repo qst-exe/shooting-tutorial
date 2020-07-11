@@ -102,6 +102,8 @@ MonoBehaviour:
   m_hpMax: 1
   m_exp: 2
   m_damage: 5
+  m_explosionPrefab: {fileID: -625171684654358397, guid: 0c0b1430de74c49f3ae0ae11807d4a01,
+    type: 3}
 --- !u!61 &7717760697347998004
 BoxCollider2D:
   m_ObjectHideFlags: 0
