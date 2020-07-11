@@ -79,6 +79,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.name.Contains("Player"))
+        {
+            var player = collision.GetComponent<Player>();
+            player.Damage(m_damage);
+            return;
+        }
+
         if (collision.name.Contains("Shot"))
         {
             Destroy(collision.gameObject);

@@ -1,22 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float m_speed;
-
     public Shot m_shotPrefab;
-
     public float m_shotSpeed;
-
     public float m_shotAngleRange;
-
     public float m_shotTimer;
-
     public int m_shotCount;
-
     public float m_shotInterval;
+    public int m_hpMax;
+    public int m_hp;
+
+    private void Awake()
+    {
+        m_hp = m_hpMax;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,5 +85,14 @@ public class Player : MonoBehaviour
             shot.Init(angleBase, speed);
 
         }
+    }
+
+    public void Damage(int damage)
+    {
+        m_hp -= damage;
+
+        if (0 < m_hp) return;
+
+        gameObject.SetActive(false);
     }
 }
