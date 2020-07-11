@@ -395,3 +395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 0.1
+  m_shotPrefab: {fileID: -3467285295762017712, guid: dcc9f916268de4727b9c9b7d8a183b15,
+    type: 3}
+  m_shotSpeed: 0.1
+  m_shotAngleRange: 20
+  m_shotTimer: 0
+  m_shotCount: 3
+  m_shotInterval: 0.3
