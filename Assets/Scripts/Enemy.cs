@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public int m_exp;
     public int m_damage;
     public Explosion m_explosionPrefab;
+    public bool m_isFollow;
 
     private int m_hp;
     private Vector3 m_direction;
@@ -35,6 +36,18 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (m_isFollow)
+        {
+            var angle = Utils.GetAngle(transform.localPosition, Player.m_instance.transform.localPosition);
+            var direction = Utils.GetDirection(angle);
+
+            transform.localPosition += direction * m_speed;
+
+            var angles = transform.localEulerAngles;
+            angles.z = angle - 90;
+            transform.localEulerAngles = angles;
+            return;
+        }
         transform.localPosition += m_direction * m_speed;
     }
 

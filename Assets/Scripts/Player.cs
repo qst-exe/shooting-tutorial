@@ -14,9 +14,11 @@ public class Player : MonoBehaviour
     public float m_shotInterval;
     public int m_hpMax;
     public int m_hp;
+    public static Player m_instance;
 
     private void Awake()
     {
+        m_instance = this;
         m_hp = m_hpMax;
     }
 
