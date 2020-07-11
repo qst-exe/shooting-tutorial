@@ -18,5 +18,7 @@ public class Player : MonoBehaviour
 
       var velocity = new Vector3(h, v) * m_speed;
       transform.localPosition += velocity;
+      // プレイヤーが画面外に出ないように位置を制限する
+      transform.localPosition = Utils.ClampPosition( transform.localPosition );
     }
 }
