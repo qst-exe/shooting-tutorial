@@ -15,4 +15,12 @@ public class Utils : MonoBehaviour
           );
     }
 
+    public static float GetAngle(Vector2 from, Vector2 to)
+    {
+        var dx = to.x - from.x;
+        var dy = to.y - from.y;
+        var red = Mathf.Atan2(dy, dx);
+        return red * Mathf.Rad2Deg;
+    }
+
 }
