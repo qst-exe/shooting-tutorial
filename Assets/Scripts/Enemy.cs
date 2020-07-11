@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,6 +24,9 @@ public class Enemy : MonoBehaviour
     public int m_damage;
     public Explosion m_explosionPrefab;
     public bool m_isFollow;
+    public Gem[] m_gemPrefabs;
+    public float m_gemSpeedMin;
+    public float m_gemSpeedMax;
 
     private int m_hp;
     private Vector3 m_direction;
@@ -110,6 +114,31 @@ public class Enemy : MonoBehaviour
             if(0 < m_hp) return;
 
             Destroy(gameObject);
+
+            /*
+            * 敵が死亡した場合は宝石を散らばらせる
+            *
+            * 例えば、敵を倒した時に獲得できる経験値が 4 で、
+            * 経験値を 1 獲得できる宝石 A と、経験値を 2 獲得できる宝石 B が存在する場合、
+            *
+            * 1. 宝石 A を 4 個
+            * 2. 宝石 A を 2 個、宝石 B を 1 個
+            * 3. 宝石 B を 2 個
+            *
+            * のいずれかのパターンで宝石が散らばる
+            */
+            var exp = m_exp;
+
+            while ( 0 < exp )
+            {
+                var gemPrefabs = m_gemPrefabs.Where( c => c.m_exp <= exp ).ToArray();
+                var gemPrefab = gemPrefabs[ Random.Range( 0, gemPrefabs.Length ) ];
+
+                var gem = Instantiate(gemPrefab, transform.localPosition, Quaternion.identity );
+                gem.Init( m_exp, m_gemSpeedMin, m_gemSpeedMax );
+
+                exp -= gem.m_exp;
+            }
         }
     }
 }
