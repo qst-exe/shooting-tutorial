@@ -455,6 +455,12 @@ MonoBehaviour:
   m_hpMax: 100
   m_hp: 0
   m_magnetDistance: 2
+  m_nextExpBase: 16
+  m_nextExpInterval: 18
+  m_level: 0
+  m_exp: 0
+  m_prevNeedExp: 0
+  m_needExp: 0
 --- !u!61 &1605528334
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -466,7 +472,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:

@@ -69,5 +69,8 @@ public class Gem : MonoBehaviour
         if ( !collision.name.Contains( "Player" ) ) return;
 
         Destroy( gameObject );
+
+        var player = collision.GetComponent<Player>();
+        player.AddExp(m_exp);
     }
 }
