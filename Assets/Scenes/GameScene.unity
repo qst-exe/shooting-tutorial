@@ -591,7 +591,10 @@ MonoBehaviour:
   - {fileID: 2148469814006399835, guid: 4f1aa1ab3f7d0441999a310fd26e18b5, type: 3}
   - {fileID: 2148469814006399835, guid: 775e6835402154471b07e6effb3af516, type: 3}
   - {fileID: 2148469814006399835, guid: c92f2770b833c4d689cdcaf3681a0b53, type: 3}
-  m_interval: 0.5
+  m_intervalFrom: 1
+  m_intervalTo: 0.25
+  m_elapsedTimeMax: 60
+  m_elapsedTime: 0
 --- !u!1 &601438832
 GameObject:
   m_ObjectHideFlags: 0

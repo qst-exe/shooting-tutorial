@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public Enemy[] m_enemyPrefabs;
-    public float m_interval;
+    public float m_intervalFrom;
+    public float m_intervalTo;
+    public float m_elapsedTimeMax;
+    public float m_elapsedTime;
 
     private float m_timer;
 
@@ -18,9 +21,14 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_elapsedTime += Time.deltaTime;
+
         m_timer += Time.deltaTime;
 
-        if (m_timer < m_interval) return;
+        var t = m_elapsedTime / m_elapsedTimeMax;
+        var interval = Mathf.Lerp(m_intervalFrom, m_intervalTo, t);
+
+        if (m_timer < interval) return;
 
         m_timer = 0;
 
