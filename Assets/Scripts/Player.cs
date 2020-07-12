@@ -24,6 +24,13 @@ public class Player : MonoBehaviour
     public int m_needExp;
     public AudioClip m_levelUpClip;
     public AudioClip m_damageClip;
+    public int m_levelMax;
+    public int m_shotCountFrom;
+    public int m_shotCountTo;
+    public float m_shotIntervalFrom;
+    public float m_shotIntervalTo;
+    public float m_magnetDistanceFrom;
+    public float m_magnetDistanceTo;
 
     private void Awake()
     {
@@ -31,6 +38,9 @@ public class Player : MonoBehaviour
         m_hp = m_hpMax;
         m_level = 1;
         m_needExp = GetNeedExp(1);
+        m_shotCount = m_shotCountFrom;
+        m_shotInterval = m_shotIntervalFrom;
+        m_magnetDistance = m_magnetDistanceFrom;
     }
 
     // Start is called before the first frame update
@@ -133,6 +143,11 @@ public class Player : MonoBehaviour
 
         var audioSource = FindObjectOfType<AudioSource>();
         audioSource.PlayOneShot(m_levelUpClip);
+
+        var t = (float) (m_level - 1) / (m_levelMax - 1);
+        m_shotCount = Mathf.RoundToInt(Mathf.Lerp(m_shotCountFrom, m_shotCountTo, t));
+        m_shotInterval = Mathf.Lerp(m_shotCountFrom, m_shotIntervalTo, t);
+        m_magnetDistance = Mathf.Lerp(m_magnetDistanceFrom, m_magnetDistanceTo, t);
     }
 
     private int GetNeedExp(int level)

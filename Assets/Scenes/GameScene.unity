@@ -1088,6 +1088,13 @@ MonoBehaviour:
   m_needExp: 0
   m_levelUpClip: {fileID: 8300000, guid: 245f8bdf10e234a60b0bcdd6e4089200, type: 3}
   m_damageClip: {fileID: 8300000, guid: cae3d6dd23ffb446c8cc09d328e52346, type: 3}
+  m_levelMax: 10
+  m_shotCountFrom: 1
+  m_shotCountTo: 4
+  m_shotIntervalFrom: 0.4
+  m_shotIntervalTo: 0.2
+  m_magnetDistanceFrom: 1
+  m_magnetDistanceTo: 2
 --- !u!61 &1605528334
 BoxCollider2D:
   m_ObjectHideFlags: 0
