@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public int m_exp;
     public int m_prevNeedExp;
     public int m_needExp;
+    public AudioClip m_levelUpClip;
+    public AudioClip m_damageClip;
 
     private void Awake()
     {
@@ -105,6 +107,9 @@ public class Player : MonoBehaviour
         if (0 < m_hp) return;
 
         gameObject.SetActive(false);
+
+        var audioSource = FindObjectOfType<AudioSource>();
+        audioSource.PlayOneShot(m_damageClip);
     }
 
     public void AddExp(int exp)
@@ -125,6 +130,9 @@ public class Player : MonoBehaviour
         ShootNWay(angleBase, angleRange, 0.15f, count);
         ShootNWay(angleBase, angleRange, 0.2f, count);
         ShootNWay(angleBase, angleRange, 0.25f, count);
+
+        var audioSource = FindObjectOfType<AudioSource>();
+        audioSource.PlayOneShot(m_levelUpClip);
     }
 
     private int GetNeedExp(int level)

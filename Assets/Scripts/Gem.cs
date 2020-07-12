@@ -7,6 +7,7 @@ public class Gem : MonoBehaviour
     public int m_exp;
     public float m_brake = 0.9f;
     public float m_followAccel = 0.01f;
+    public AudioClip m_goldClip;
 
     private Vector3 m_direction;
     private float m_speed;
@@ -72,5 +73,8 @@ public class Gem : MonoBehaviour
 
         var player = collision.GetComponent<Player>();
         player.AddExp(m_exp);
+
+        var audioSource = FindObjectOfType<AudioSource>();
+        audioSource.PlayOneShot(m_goldClip);
     }
 }

@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: -658635507141636765, guid: e167f6881d0ad4c51a2d31eee221aa37, type: 3}
   m_gemSpeedMin: 0.0125
   m_gemSpeedMax: 0.0875
+  m_deathClip: {fileID: 8300000, guid: cae3d6dd23ffb446c8cc09d328e52346, type: 3}
 --- !u!61 &7717760697347998004
 BoxCollider2D:
   m_ObjectHideFlags: 0
